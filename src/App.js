@@ -10,22 +10,33 @@ class App extends Component {
     players: [
       {
         name: "Joss",
+        score: 0,
         id: 1
       },
       {
         name: "Martin",
+        score: 0,
         id: 2
       },
       {
         name: "Jonny",
+        score: 0,
         id: 3
       },
       {
         name: "Paul",
+        score: 0,
         id: 4
       }
     ]
   };
+
+    handleScoreChange = (delta) => {
+    // this.setState( prevState => ({
+    //   score: prevState.score + 1
+    // }));
+    console.log(delta);
+  }
 
   handleRemovePlayer = (id) => {
     this.setState( prevState => {
@@ -47,8 +58,10 @@ class App extends Component {
         {this.state.players.map( player =>
           <Player
             name={player.name}
+            score={player.score}
             id={player.id}
             key={player.id.toString()}
+            changeScore={this.handleScoreChange}
             removePlayer={this.handleRemovePlayer}
           />
         )}
